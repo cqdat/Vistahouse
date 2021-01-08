@@ -1,0 +1,74 @@
+﻿@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Models
+@using NhomXingfa.Models
+@model FooterViewModel
+
+<footer class="ftco-footer ftco-section" style="background-color:#f7f6f2">
+    <div class="container">
+        <div class="row">
+            <div class="mouse">
+                <a href="#" class="mouse-icon">
+                    <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                </a>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">
+                        <a href="/" title="Logo"><img src="~/images/LogoVuongTanThoi.jpg" style="width:120px" alt="logo"></a>
+                    </h2>
+                    <p>Giải pháp nội thất đồ gỗ cho mọi chung cư.</p>
+                   
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Liên hệ với chúng tôi</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+
+                            <li><span class="icon icon-map-marker"></span><span class="text">@Model.lstInformation.Where(a => a.InfoCode == "Add").FirstOrDefault().InfoContent</span></li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">@Model.lstInformation.Where(a => a.InfoCode == "Phone").FirstOrDefault().InfoContent</span></a></li>
+                            <li><a href="#"><span class="icon icon-mail_outline"></span><span class="text">@Model.lstInformation.Where(a => a.InfoCode == "Email").FirstOrDefault().InfoContent</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Chính sách và quy định</h2>
+                    <div class="d-flex">
+                        <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+
+                            @foreach (var i in Model.lstChinhSach)
+                            {
+                                <li><a href="/@i.SEOUrlRewrite-@i.BlogID" class="py-2 d-block" title="@i.BlogName">@i.BlogName</a></li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Fanpage</h2>
+                    <div class="fb-page" data-href="https://www.facebook.com/noithattanthoi/" data-tabs="timeline" data-width="300" data-height="150" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/noithattanthoi/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/noithattanthoi/">Nội Thất Tân Thời</a></blockquote></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright © 2020 All rights reserved | Designed <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://noithattanthoi.com" target="_blank">Nội Thất Tân Thời</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+

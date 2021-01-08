@@ -1,0 +1,63 @@
+﻿@using NhomXingfa.Areas.Quantri.Utilities
+@using NhomXingfa.Areas.Quantri.Models.DataModels
+@model IEnumerable<Category>
+
+<section class="ftco-section ftco-category ftco-no-pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6 order-md-last align-items-stretch d-flex">
+                        <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex fadeInUp ftco-animated" style="background-image: url(../images/category.jpg);">
+                            <div class="text text-center">
+                                <h2>Nội thất Tân Thời</h2>
+                                <p>Kiến tạo cho không gian sống của bạn với những mẫu nội thất...</p>
+                                <p><a href="/san-pham" class="btn btn-primary">Xem sản phẩm</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end fadeInUp ftco-animated" style="background-image: url(../images/category-1.jpg);">
+                            <div class="text px-3 py-1">
+                                <h2 class="mb-0">
+                                    @{ var m = Model.Where(q => q.IsActive == true && q.CategoryID == 34).FirstOrDefault();}
+                                    <a href="/san-pham/@m.SEOUrlRewrite-@m.CategoryID">@m.CategoryName</a>
+
+
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="category-wrap ftco-animate img d-flex align-items-end fadeInUp ftco-animated" style="background-image: url(../images/category-2.jpg);">
+                            <div class="text px-3 py-1">
+                                <h2 class="mb-0">
+                                    @{ var b = Model.Where(q => q.IsActive == true && q.CategoryID == 36).FirstOrDefault();}
+                                    <a href="/san-pham/@b.SEOUrlRewrite-@b.CategoryID">@b.CategoryName</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end fadeInUp ftco-animated" style="background-image: url(../images/category-3.jpg);">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0">
+                            @{ var n = Model.Where(q => q.IsActive == true && q.CategoryID == 35).FirstOrDefault();}
+                            <a href="/san-pham/@n.SEOUrlRewrite-@n.CategoryID">@n.CategoryName</a>
+                        </h2>
+                    </div>
+                </div>
+                <div class="category-wrap ftco-animate img d-flex align-items-end fadeInUp ftco-animated" style="background-image: url(../images/category-4.jpg);">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0">
+                            @{ var v = Model.Where(q => q.IsActive == true).FirstOrDefault();}
+                            <a href="/san-pham/@v.SEOUrlRewrite-@v.CategoryID">@v.CategoryName</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

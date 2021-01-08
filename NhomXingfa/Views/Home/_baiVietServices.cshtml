@@ -1,0 +1,36 @@
+﻿@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Models
+@using NhomXingfa.Areas.Quantri.Utilities
+@using NhomXingfa.Models
+@model IEnumerable<Blog>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row no-gutters ftco-services">
+            @foreach (var i in Model)
+            {
+                <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="media block-6 services mb-md-0 mb-4">
+                        <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+
+                            <a href="/bai-viet/@i.SEOUrlRewrite-@i.BlogID" class="title">
+                                <span class="@i.Descript"></span>
+
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading">
+                                <a href="/bai-viet/@i.SEOUrlRewrite-@i.BlogID" class="title">
+
+                                    @i.BlogName
+                                </a>
+                            </h3>
+                           
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,505 @@
+﻿@model NhomXingfa.Models.DetailProductViewModel
+@using NhomXingfa.Areas.Quantri.Utilities
+@{ 
+    int i = 0;
+    int j = 0;
+}
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_product_img">
+                    <div id="carouselExampleIndicators"
+                         class="carousel slide"
+                         data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            @foreach (var q in Model.listimage)
+                            {
+                                if (i == 0)
+                                {
+                                    <li data-target="#carouselExampleIndicators"
+                                        data-slide-to="@i"
+                                        class="active">
+                                        <img src="@WebConstants.ImgProductShow/@q.urlimg"
+                                             alt="" />
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li data-target="#carouselExampleIndicators"
+                                        data-slide-to="@i"
+                                        class="">
+                                        <img src="@WebConstants.ImgProductShow/@q.urlimg"
+                                             alt="" />
+                                    </li>
+                                }
+                                i++;
+                            }
+
+                        </ol>
+                        <div class="carousel-inner">
+                            @foreach (var q in Model.listimage)
+                            {
+                                if (j == 0)
+                                {
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100"
+                                             src="@WebConstants.ImgProductShow/@q.urlimg"
+                                             alt="First slide" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100"
+                                             src="@WebConstants.ImgProductShow/@q.urlimg"
+                                             alt="First slide" />
+                                    </div>
+                                }
+                                j++;
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="s_product_text">
+                    <h3>@Model.product.ProductName</h3>
+                    Giá: <h2>
+                        @if (Model.product.Price == "0" || Model.product.Price == "" || Model.product.Price == null)
+                        {
+                            <span>Liên hệ</span>
+                        }
+                        else
+                        {
+                            <span>@Model.product.Price</span>
+                        }
+
+                        
+                    </h2>
+                    <ul class="list">
+                        <li>
+                            <a class="active" href="/san-pham/@Model.category.SEOUrlRewrite-@Model.category.CategoryID">
+                                <span>Loại</span> : @Model.category.CategoryName
+                            </a>
+                        </li>
+                        @if (Model.product.InStock == true)
+                        {
+                            <li>
+                                <a href="#"> <span>Tình trạng</span> : <span class="text-danger"><b>Còn Hàng</b></span></a>
+                            </li>
+                        }
+                    </ul>
+                    <p>
+                        @Model.product.ShortDescription
+                    </p>
+                    @*<div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="text"
+                                   name="qty"
+                                   id="sst"
+                                   maxlength="12"
+                                   value="1"
+                                   title="Quantity:"
+                                   class="input-text qty" />
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    class="increase items-count"
+                                    type="button">
+                                <i class="lnr lnr-chevron-up"></i>
+                            </button>
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                    class="reduced items-count"
+                                    type="button">
+                                <i class="lnr lnr-chevron-down"></i>
+                            </button>
+                        </div>*@
+                    <div class="card_area">
+                        <a class="btn btn-black py-3 px-5" href="#">
+                            <i class="fa fa-phone"></i>
+                            0979.77.11.33
+                        </a>
+                        <div class="fb-share-button" data-href="https://www.facebook.com/noithattanthoi" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fnoithattanthoi&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+
+                        <div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize=false></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   id="home-tab"
+                   data-toggle="tab"
+                   href="#home"
+                   role="tab"
+                   aria-controls="home"
+                   aria-selected="true">Chi tiết sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link"
+                       id="profile-tab"
+                       data-toggle="tab"
+                       href="#profile"
+                       role="tab"
+                       aria-controls="profile"
+                       aria-selected="false">Sản phẩm cùng chủng loại</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="contact-tab"
+                   data-toggle="tab"
+                   href="#contact"
+                   role="tab"
+                   aria-controls="contact"
+                   aria-selected="false">Ý kiến khách hàng</a>
+            </li>
+            @*<li class="nav-item">
+                    <a class="nav-link"
+                       id="review-tab"
+                       data-toggle="tab"
+                       href="#review"
+                       role="tab"
+                       aria-controls="review"
+                       aria-selected="false">Reviews</a>
+                </li>*@
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active"
+                 id="home"
+                 role="tabpanel"
+                 aria-labelledby="home-tab">
+
+                @Html.Raw(Model.product.Content)
+            </div>
+            <div class="tab-pane fade"
+                 id="profile"
+                 role="tabpanel"
+                 aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (var q in Model.lstProductSameCate)
+                            {
+                                <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+                                    <div class="product">
+                                        <a href="#" class="img-prod">
+                                            <img class="img-fluid" style="height:203px"  src="@WebConstants.ImgProductShow/@q.Images" alt="@q.Images">
+                                            <span class="status"></span>
+                                            <div class="overlay"></div>
+                                        </a>
+                                        <div class="text py-3 pb-4 px-3 text-center">
+                                            <h3><a href="/san-pham-ct/@q.SEOUrlRewrite-@q.ProductID">@q.ProductName</a></h3>
+                                            <div class="d-flex">
+                                                <div class="pricing">
+                                                    <p class="price">
+                                                        @if (q.Price == null || q.Price == "" || q.Price == "0")
+                                                        {
+                                                            <span class="price-sale">Liên hệ</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="price-sale">@string.Format("{0:C}", q.Price)</span>
+                                                        }
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="bottom-area d-flex px-3">
+                                                <div class="m-auto d-flex">
+                                                    <a href="/san-pham-ct/@q.SEOUrlRewrite-@q.ProductID" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                                        <span><i class="ion-ios-menu"></i></span>
+                                                    </a>
+                                                    <a href="/san-pham-ct/@q.SEOUrlRewrite-@q.ProductID" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                        <span><i class="ion-ios-cart"></i></span>
+                                                    </a>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade"
+                 id="contact"
+                 role="tabpanel"
+                 aria-labelledby="contact-tab">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="comment_list">
+                            @*<div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="../img/product/single-product/review-1.png"
+                                             alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Blake Ruiz</h4>
+                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Reply</a>
+                                    </div>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo
+                                </p>
+                            </div>*@
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="review_box">
+                            <h4>Ý kiến của bạn</h4>
+                            <form class="row contact_form"
+                                  action="contact_process.php"
+                                  method="post"
+                                  id="contactForm"
+                                  novalidate="novalidate">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               id="name"
+                                               name="name"
+                                               placeholder="Tên đầy đủ" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email"
+                                               class="form-control"
+                                               id="email"
+                                               name="email"
+                                               placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               id="number"
+                                               name="number"
+                                               placeholder="Số điện thoại" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control"
+                                                  name="message"
+                                                  id="message"
+                                                  rows="1"
+                                                  placeholder="ý kiến"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit"
+                                            value="submit"
+                                            class="btn btn-primary py-3 px-4">
+                                        Gởi ngay
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade"
+                 id="review"
+                 role="tabpanel"
+                 aria-labelledby="review-tab">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row total_rate">
+                            <div class="col-6">
+                                <div class="box_total">
+                                    <h5>Overall</h5>
+                                    <h4>4.0</h4>
+                                    <h6>(03 Reviews)</h6>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rating_list">
+                                    <h3>Based on 3 Reviews</h3>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                5 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                4 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                3 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                2 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                1 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review_list">
+                           
+                          
+                            @*<div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="../img/product/single-product/review-3.png"
+                                             alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Blake Ruiz</h4>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo
+                                </p>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="review_box">
+                            <h4>Add a Review</h4>
+                            <p>Your Rating:</p>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <p>Outstanding</p>
+                            <form class="row contact_form"
+                                  action="contact_process.php"
+                                  method="post"
+                                  id="contactForm"
+                                  novalidate="novalidate">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               id="name"
+                                               name="name"
+                                               placeholder="Your Full name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email"
+                                               class="form-control"
+                                               id="email"
+                                               name="email"
+                                               placeholder="Email Address" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               id="number"
+                                               name="number"
+                                               placeholder="Phone Number" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control"
+                                                  name="message"
+                                                  id="message"
+                                                  rows="1"
+                                                  placeholder="Review"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit"
+                                            value="submit"
+                                            class="btn submit_btn">
+                                        Submit Now
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

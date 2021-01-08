@@ -1,0 +1,66 @@
+﻿@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Models
+@using NhomXingfa.Areas.Quantri.Utilities
+@using NhomXingfa.Models
+@model IEnumerable<ProductGroup>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-3 pb-3">
+            <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
+                <h2 class="mb-4">Sản phẩm nội bật</h2>
+                <p>Đem đến cho khách hàng sự trải nghiệm tuyệt vời!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var i in Model)
+            {
+                <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+                    <div class="product">
+                        <a href="/san-pham-ct/@i.Product.SEOUrlRewrite-@i.Product.ProductID" class="img-prod">
+                            <img class="img-fluid" src="@WebConstants.ImgProductShow/@i.Product.Images" alt="@i.Product.Images">
+                            @*<span class="status">30%</span>*@
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="/san-pham-ct/@i.Product.SEOUrlRewrite-@i.Product.ProductID">@i.Product.ProductName</a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price">
+                                        @if (i.Product.Price == null || i.Product.Price == "" || i.Product.Price == "0")
+                                        {
+                                            <span class="price-sale">Liên hệ</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="price-sale">@string.Format("{0:C}", i.Product.Price)</span>
+                                        }
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="/san-pham-ct/@i.Product.SEOUrlRewrite-@i.Product.ProductID" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="/san-pham-ct/@i.Product.SEOUrlRewrite-@i.Product.ProductID" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+
+

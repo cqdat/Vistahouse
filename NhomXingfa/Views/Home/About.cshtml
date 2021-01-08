@@ -1,0 +1,80 @@
+﻿@using System.Configuration
+@using NhomXingfa.Areas.Quantri.Models
+@using NhomXingfa.Areas.Quantri.Utilities
+@using NhomXingfa.Models
+@model AboutUsViewModel
+
+@{
+    ViewBag.Title = Model.aboutus.SEOTitle;
+    Helpers h = new Helpers();
+}
+@section metatags
+{
+    <meta name="keywords" content="@Model.aboutus.SEOKeywords" />
+    <meta name="description" content="@Model.aboutus.SEOMetadescription" />
+}
+<div class="hero-wrap hero-bread" style="background-image: url('../images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span> <span>@Model.aboutus.BlogName</span></p>
+                <h1 class="mb-0 bread">@Model.aboutus.BlogName</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../images/about.jpg);">
+                <a href="~/images/TanThoiVideo.mp4" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+                    <span class="icon-play"></span>
+                </a>
+
+            </div>*@
+            @*<div class="col-md-5">
+                <video src="~/images/TanThoiVideo.mp4" controls="controls" style="height:300px; width:100%" audio="muted">Dòng thông báo</video>
+            </div>*@
+
+            <div class="col-md-12 py-5 wrap-about pb-md-5 ftco-animate fadeInUp ftco-animated">
+
+
+                @Html.Raw(Model.aboutus.Content)
+                <p><a href="/san-pham" class="btn btn-primary">xem sản phẩm</a></p>
+
+            </div>
+        </div>
+
+        <div class="ftco-footer-widget mb-4">
+            <h3 class="ftco-heading-2">Chính sách và quy định</h3>
+            <div class="d-flex">
+                <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
+                    @foreach (var i in Model.lstAboutMoreLeftMenu)
+                    {
+                        <li><a href="/bai-viet/@i.SEOUrlRewrite-@i.BlogID" class="py-2 d-block" title="@i.BlogName">@i.BlogName</a></li>
+                    }
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $(".pull-right li").removeClass("active");
+
+            $(".pull-right li#menugt").addClass("active");
+
+        });
+    </script>
+}

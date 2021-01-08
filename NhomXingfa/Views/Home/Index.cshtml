@@ -1,0 +1,103 @@
+﻿@using NhomXingfa.Models
+@using NhomXingfa.Areas.Quantri.Utilities
+@model IndexViewModels
+@{
+    var first = new NhomXingfa.Areas.Quantri.Models.DataModels.ProductGroup();
+
+    ViewBag.Title = "Nội thất chung cư Bình DƯơng, nội thất giá rẻ Bình Dương";
+
+
+    if (Model.listSPMoi.Count > 0)
+    {
+        first = Model.listSPMoi.First();
+    }
+    else
+    {
+        first = null;
+    }
+    int count = 0;
+}
+@section metatags
+{
+    <meta name="keywords" content="nội thất giá rẻ bình dương, nội thất chung cư bình dương, nội thất bình dương, thi công nội thất bình dương" />
+    <meta name="description" content="Chung tôi cung cấp các dịch vụ thi công nội thất Tân thời cung cấp các sản phẩm nội thất giá rẻ chất lượng, sản phẩm nội thất chung cư tại Bình Dương" />
+}
+<!--================Home Banner Area =================-->
+<section id="home-section" class="hero">
+    <div class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image: url(../images/home1-banner3.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-12 ftco-animate text-center">
+                        <h1 class="mb-2">Nội thất Tân Thời</h1>
+                        <h2 class="subheading mb-4">Chúng tôi chuyên cung cấp các sản phẩm nội thất chung cư giá rẻ tại Bình Dương</h2>
+                        <p><a href="https://noithatchungcubinhduong.com/chi-tiet/dich-vu-thiet-ke-va-thi-cong-noi-that-tai-binh-duong-18" class="btn btn-primary">Xem Chi Tiết</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url(../images/home2-banner3.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-sm-12 ftco-animate text-center">
+                        <h1 class="mb-2">Kiến tạo cho không gian sống của bạn</h1>
+                        <h2 class="subheading mb-4">Với những bộ sưu tập nội thất đa dạng và phong phú</h2>
+                        <p><a href="/san-pham" class="btn btn-primary">Xem thêm</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!-- Start feature Area -->
+@Html.Partial("_baiVietServices", Model.lstServices)
+
+<!-- End feature Area -->
+<!--================ Feature Product Area =================-->
+@Html.Partial("_sanPhamNoiBat", Model.lstCates) 
+
+<!--================ End Feature Product Area =================-->
+<!--================ Offer Area =================-->
+<!--================ Inspired Product Area =================-->
+
+@Html.Partial("_duAnTieuBieu", Model.lstProductNoibat)
+<!--================ End Inspired Product Area =================-->
+
+<section class="ftco-section img" style="background-image: url(/images/bg_3.jpg);">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate fadeInUp ftco-animated">
+
+                <h2 class="mb-4">Các dự án đã thực hiện</h2>
+                <p style="color:#05b61b">Hãy tham khảo những dự án mà chúng tôi đã thực hiện gần đây</p>
+                <h3><a href="/du-an" style="color:#ffffff">Xem các dự án</a></h3>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ Start Blog Area =================-->
+@Html.Partial("_lastNews", Model.lstLastNews)
+
+<!--================ End Blog Area =================-->
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $(".pull-right li").removeClass("active");
+
+            $(".pull-right li#menuhome").addClass("active");
+
+        });
+    </script>
+}
