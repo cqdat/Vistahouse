@@ -14,5 +14,9 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         {
             return View();
         }
+        public ActionResult testing()
+        {
+            return View();
+        }
     }
 }
