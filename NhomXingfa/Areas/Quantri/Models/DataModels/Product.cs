@@ -27,23 +27,24 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public string ProductName { get; set; }
 
         public bool? IsProduct { get; set; }
-        [StringLength(20)]
+
+        [StringLength(50)]
         public string Capacity { get; set; }
-        [StringLength(12)]
-        public string Price { get; set; }
-        [StringLength(12)]
-        public string PricePhanTram { get; set; }
 
-        [StringLength(12)]
-        public string PriceSale { get; set; }
+        public decimal? Price { get; set; }
+
+        public int? PricePhanTram { get; set; }
+
+        public decimal? PriceSale { get; set; }
+
+        [StringLength(50)]
         public string Capacity1 { get; set; }
-        [StringLength(12)]
-        public string Price1 { get; set; }
-        [StringLength(12)]
-        public string PricePhanTram1 { get; set; }
 
-        [StringLength(12)]
-        public string PriceSale1 { get; set; }
+        public decimal? Price1 { get; set; }
+
+        public int? PricePhanTram1 { get; set; }
+
+        public decimal? PriceSale1 { get; set; }
 
         public int? CategoryIDParent { get; set; }
 
@@ -65,6 +66,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public bool? IsSale { get; set; }
 
         public bool? IsNew { get; set; }
+
         public bool? isHot { get; set; }
 
         public int? Rating { get; set; }

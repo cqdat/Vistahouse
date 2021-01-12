@@ -49,16 +49,16 @@ namespace NhomXingfa.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Tài Khoản")]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Mật Khẩu")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Nhớ đăng nhập lần sau ?")]
+        [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
 

@@ -20,36 +20,17 @@ namespace NhomXingfa
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/js/jquery.min.js",
-                "~/js/jquery-migrate-3.0.1.min.js",
-                "~/js/popper.min.js",
-                "~/js/bootstrap.min.js",
-                "~/js/jquery.easing.1.3.js",
-                "~/js/jquery.waypoints.min.js",
-                "~/js/jquery.stellar.min.js",
-                "~/js/owl.carousel.min.js",
-                "~/js/jquery.magnific-popup.min.js",
-                "~/js/aos.js",
-                "~/js/jquery.animateNumber.min.js",
-                "~/js/bootstrap-datepicker.js",
-                "~/js/scrollax.min.js",
-                "~/js/google-map.js",
-                      "~/js/main.js"));
+                       "~/Scripts/bootstrap.js",
+ "~/Scripts/jquery-migrate-1.2.1.min.js",
+ "~/Scripts/classie.js", "~/Scripts/photostack.js",
+                       "~/Scripts/slick.js", "~/Scripts/clients.js"
+                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Content/bootstrap.css",
-                      "~/css/open-iconic-bootstrap.min.css",
-                      "~/css/animate.css",
-                      "~/css/owl.carousel.min.css",
-                      "~/css/owl.theme.default.min.css",
-                      "~/css/magnific-popup.css",
-                      "~/css/aos.css",
-                      "~/css/ionicons.min.css",
-                      "~/css/bootstrap-datepicker.css",
-                      "~/css/jquery.timepicker.css",
-                      "~/css/flaticon.css",
-                      "~/css/icomoon.css",
-                      "~/css/style.css"));
+                     "~/Content/bootstrap.css",
+                     "~/Content/site.css", "~/Content/component.css",
+                     "~/Content/slick.css", "~/Content/slick-theme.css"
+                     ));
 
             #region Admin
             bundles.Add(new ScriptBundle("~/Areas/bundles/jquery").Include(
@@ -63,7 +44,7 @@ namespace NhomXingfa
             bundles.Add(new ScriptBundle("~/Areas/bundles/modernizr").Include(
                         "~/Areas/Quantri/assets/js/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/Areas/bundles/bootstrap").Include(
                 "~/Areas/Quantri/assets/js/jquery.unobtrusive-ajax.min.js",
                       "~/Areas/Quantri/assets/js/bootstrap.js"));
 

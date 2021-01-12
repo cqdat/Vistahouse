@@ -1,70 +1,109 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" href="~/favicon.ico" type="image/png" />
-    <title>@ViewBag.Title | Nội thất Chung cư bình dương</title>
-    @RenderSection("metatags", false)
-    <!-- Bootstrap CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Juice</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/css")
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165865743-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
-        gtag('config', 'UA-165865743-1');
-    </script>
-
+    @*<link href="~/fonts/SVN-Friends Forever.otf" rel="stylesheet" />*@
 
 </head>
-<body class="goto-here">
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
-    <div id="fb-root"></div>
+<body>
+    <div class="toptran container-fluid">
 
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=501550580008785&autoLogAppEvents=1"></script>
+        <div class="col-md-5">
+            &nbsp;
+        </div>
+        <div class="col-md-7">
+            <h4>
+                Hotline: 1900 63 67 91 - 0909 09 60 60 - 0909 44 80 60
+            </h4>
+            <a href="#">
+                <i class="glyphicon glyphicon-list"></i>
+                Quản lý Đơn Hàng
+            </a>
+            <a href="#">
+                Đăng nhập / Đăng ký
+            </a>
+            <a href="#">
+                <sub>GB</sub>English
+            </a>
+        </div>
 
-    <!--================Header Menu Area =================-->
-    @{Html.RenderAction("loadMenu", "Home");}
-    <!--================Header Menu Area =================-->
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <a class="navbar-brand" href="/" style="padding-top:0px;">
+                    <img src="~/images/p.png" title="logo" style="height:50px;" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>*@
+                @*@Html.Partial("_LoginPartial")*@
 
-    @RenderBody()
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="/product/goisanpham">Gói định kỳ</a>
+                    </li>
+                    <li>
+                        <a href="#">Thông tin dinh dưỡng</a>
+                    </li>
+                    <li>
+                        <a href="#">Câu hỏi thường gặp</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">
+                            Về chúng tôi <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/home/cart">
+                            <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">
+                                <span class="redshop">13</span>
+                            </i>
 
-    <!--================ start footer Area  =================-->
-    @{Html.RenderAction("loadFooter", "Home");}
-
-    <!--================ End footer Area  =================-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content" style="height:800px;">
+        @RenderBody()
+        <hr />
+        <footer>
+            @Html.Partial("_footer")
+        </footer>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="~/js/popper.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.easing.1.3.js"></script>
-    <script src="~/js/jquery.waypoints.min.js"></script>
-    <script src="~/js/jquery.stellar.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/js/aos.js"></script>
-    <script src="~/js/jquery.animateNumber.min.js"></script>
-    <script src="~/js/bootstrap-datepicker.js"></script>
-    <script src="~/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="~/js/google-map.js"></script>
-    <script src="~/js/main.js"></script>
+
+    <div id="full-opacity">&nbsp;</div>
 </body>
 </html>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->

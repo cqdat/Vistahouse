@@ -119,7 +119,8 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,Price,PriceSale,CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
+        public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
                                    HttpPostedFileBase HinhAnh)
         {
             if (ModelState.IsValid)
@@ -159,7 +160,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                 product.CategoryIDParent = product.CategoryID;
                 product.IsProduct = true;
 
-                product.PriceSale = "0";
+                
                 product.SEOUrlRewrite = Helpers.ConvertToUpperLower(product.ProductName);
                 product.Created = DateTime.Now;
                 product.CreatedBy = db.Users.FirstOrDefault(q => q.UserName == User.Identity.Name).UserID;
@@ -204,7 +205,8 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Price,PriceSale,CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
+        public ActionResult Edit([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
             HttpPostedFileBase HinhAnh)
         {
             if (ModelState.IsValid)
@@ -252,10 +254,10 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                 }
 
                 product.IsProduct = true;
-                product.Price = product.Price;
-                product.PriceSale = product.PriceSale;
+               
                 product.Created = product.Created;
                 product.CreatedBy = product.CreatedBy;
+                
                 product.SEOUrlRewrite = Helpers.ConvertToUpperLower(product.ProductName);
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();

@@ -15,11 +15,14 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public virtual DbSet<Advertise> Advertises { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<BlogComment> BlogComments { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerContact> CustomerContacts { get; set; }
         public virtual DbSet<CustomerContactType> CustomerContactTypes { get; set; }
         public virtual DbSet<CustomerFeedback> CustomerFeedbacks { get; set; }
+        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
         public virtual DbSet<Information> Information { get; set; }
         public virtual DbSet<MenuImage> MenuImages { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
@@ -59,6 +62,31 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
             modelBuilder.Entity<BlogComment>()
                 .Property(e => e.Commenter)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.ShipDelivery)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.Total)
+                .HasPrecision(16, 9);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.TotalConLai)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Cart>()
+                .HasMany(e => e.CartDetails)
+                .WithOptional(e => e.Cart)
+                .HasForeignKey(e => e.CarID);
+
+            modelBuilder.Entity<CartDetail>()
+                .Property(e => e.Price)
+                .HasPrecision(16, 9);
+
+            modelBuilder.Entity<CartDetail>()
+                .Property(e => e.Total)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.SEOUrlRewrite)
@@ -101,6 +129,11 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .WithOptional(e => e.CustomerContactType)
                 .HasForeignKey(e => e.ContactTypeId);
 
+            modelBuilder.Entity<CustomerOrder>()
+                .HasMany(e => e.Carts)
+                .WithOptional(e => e.CustomerOrder)
+                .HasForeignKey(e => e.CustID);
+
             modelBuilder.Entity<MenuImage>()
                 .Property(e => e.ImageURL)
                 .IsUnicode(false);
@@ -116,11 +149,19 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
-                .IsUnicode(false);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.PriceSale)
-                .IsUnicode(false);
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Price1)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PriceSale1)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Images)

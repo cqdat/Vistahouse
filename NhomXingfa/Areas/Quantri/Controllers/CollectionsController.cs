@@ -120,8 +120,8 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
                 product.ProductCode = "BST";
                 product.IsProduct = false;
-                product.Price = "0";
-                product.PriceSale = "0";
+                product.Price = 0;
+                product.PriceSale = 0;
                 product.InStock = true;
                 product.IsSale = false;
                 product.IsNew = true;

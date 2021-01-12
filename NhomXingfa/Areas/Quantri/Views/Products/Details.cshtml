@@ -43,10 +43,63 @@
                                         </tr>
                                     </thead> -->
                                     <tbody>
-                                        
+
                                         <tr>
                                             <td>DM SP</td>
                                             <td><a href="#">@Model.Category1.CategoryName</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2" style="background-color:#fcdada">
+                                                <table>
+                                                    <tr>
+                                                        <td rowspan="3">Loại: <b> @Model.Capacity </b>(ml)</td>
+                                                        <td style="padding-left:10px">
+                                                            Giá:  <span class="badge badge-danger">
+                                                                @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price)) đ
+                                                            </span>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left:10px">
+                                                            KM: <span class="badge badge-warning">@Model.PricePhanTram %</span>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left:10px">
+                                                            Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale)) đ</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="background-color:#d9d9d9">
+                                                <table>
+                                                    <tr>
+                                                        <td rowspan="3">Loại: <b> @Model.Capacity1 </b>(ml)</td>
+                                                        <td style="padding-left:10px">
+                                                            Giá:  <span class="badge badge-danger">
+                                                                @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price1)) đ
+                                                            </span>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left:10px">
+                                                            KM: <span class="badge badge-warning">@Model.PricePhanTram1 %</span>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left:10px">
+                                                            Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale1)) đ</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>SP Mới</td>
@@ -62,11 +115,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>SP Sale</td>
+                                            <td>SP Hot</td>
                                             <td>
-                                                @if (Model.IsSale == true)
+                                                @if (Model.isHot == true)
                                                 {
-                                                    <span class="badge badge-warning">Đang sale</span>
+                                                    <span class="badge badge-danger">Sản Phẩm Hot</span>
                                                 }
                                                 else
                                                 {
@@ -154,7 +207,7 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#home1" data-toggle="tab">Bài viết</a></li>
                                     <li class=""><a href="#uploadhinhanh" data-toggle="tab" id="tabHinhAnh">Hình ảnh</a></li>
-                                    
+
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active clearfix" id="home1">
@@ -164,7 +217,7 @@
                                     <div class="tab-pane" id="uploadhinhanh">
 
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
